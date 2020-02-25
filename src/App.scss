@@ -1,0 +1,122 @@
+$default-height: 70px;
+
+html, body, #root {
+    height: 100%;
+}
+
+#root {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-wrapper {
+    margin: 0 auto;
+    width: 390px;
+
+    .title {
+        font-size: 30px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .contact {
+        display: flex; 
+        align-items: center;
+        margin-top: 10px;
+        .img-container {
+            width: 35px;
+            margin-left: 10px;
+        }
+        .icons {
+            width: 100%;
+            cursor: pointer;
+        }
+    }
+}
+
+.calculator-wrapper {
+    border: 2px solid black;
+    text-align: right;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 40px;
+}
+
+@mixin f1 ($flexPercentage, $bgColor, $fontColor: inherit) {
+    display: flex;
+    flex: $flexPercentage;
+    background-color: $bgColor;
+    color: $fontColor;
+}
+
+.screen-container {
+    @include f1(100%, darkslategray, white);
+    padding: 10px 20px !important;
+    height: 70px;
+    user-select: text;
+    input {
+        height: inherit;
+        text-align: right;
+        background-color: inherit;
+        border-style: hidden;
+        width: 100%;
+        color: white;
+        font-size: 35px;
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.numeric-container {
+    text-align: center;
+    @include f1(80%, #ddd);
+    display: inherit;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    div {
+        cursor: pointer;
+        user-select: none;
+        height: 60px;
+        &:hover {
+            background-color: #d6d1d1;
+        }
+        &:active {
+            background-color: #bbb3b3;
+        }
+    }
+    .clear {
+        flex: 100%;
+        font-size: 40px;
+    }
+    .number {
+        flex: 0 32%;
+        font-weight: bold;
+    }
+}
+
+.action-container {
+    @include f1(20%, red, white);
+    text-align: center;
+    display: inherit;
+    flex-wrap: wrap;
+    font-weight: bold;
+    
+    div {
+        cursor: pointer;
+        user-select: none;
+        &:hover {
+            background-color: #ec0505;
+        }
+        &:active {
+            background-color: #d80808;
+        }
+    }
+    .action {
+        flex: 0 100%;
+    }
+}
